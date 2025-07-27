@@ -1,0 +1,27 @@
+name: supcon
+channels:
+  - defaults
+  - conda-forge
+  - pytorch
+dependencies:
+  - python=3.9
+  - pip
+  - numpy
+  - pandas
+  - matplotlib
+  - seaborn
+  - scikit-learn
+  - statsmodels
+  - pytorch=1.12.0
+  - torchvision=0.13.0
+  - torchaudio=0.12.0
+  - cudatoolkit=11.6
+  - tensorboard
+  - timm
+  - submitit
+  - absl-py
+  - tqdm
+  - pip:
+      - protobuf==3.20.3
+      - scipy==1.13.1
+      - tensorboard-logger==0.1.0
