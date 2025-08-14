@@ -20,7 +20,7 @@ def parse_option():
     parser.add_argument('--batch_size', type=int, default=128, help='batch size')
     parser.add_argument('--num_workers', type=int, default=16, help='#workers for dataloader')
     parser.add_argument('--encoder', type=str, default='resnet18', help='encoder')
-    parser.add_argument('--model_path', type=str, help='patSh to checkpoint')
+    parser.add_argument('--model_path', type=str, help='path to checkpoint')
 
     parser.add_argument('--spatial_distribution_path', type=str, help='path to spatial_distribution npz')
     parser.add_argument('--scenario', type=str, default='closed-world',
