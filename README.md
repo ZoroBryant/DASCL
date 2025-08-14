@@ -1,1 +1,2 @@
-# Downlink control information-based Application identification via Supervised Contrastive Learning(DASCL)
+# DCI-based Application identification via SCL
+
