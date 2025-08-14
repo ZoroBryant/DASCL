@@ -100,7 +100,7 @@ def set_loader(opt):
                  (0.08487337082624435, 0.21652734279632568, 0.21652734279632568))
 
     train_transform = transforms.Compose([
-        transforms.Resize(size=(224, 224)),
+        transforms.Resize(size=(128, 128)),
         transforms.RandomApply([
             transforms.ColorJitter(0.4, 0.4, 0.4, 0.1)
         ], p=0.8),
