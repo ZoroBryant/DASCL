@@ -102,7 +102,7 @@ def set_loader(opt):
     train_transform = transforms.Compose([
         transforms.Resize(size=(224, 224)),
         transforms.RandomApply([
-            transforms.ColorJitter(0.4, 0.4, 0.4, 0.1)  # 亮度，对比度，饱和度，色调
+            transforms.ColorJitter(0.4, 0.4, 0.4, 0.1)
         ], p=0.8),
         transforms.ToTensor(),
         # light Gaussian noise to encourage robustness
