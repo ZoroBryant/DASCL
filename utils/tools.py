@@ -244,4 +244,4 @@ def plot_pr_curve_binned(y_true, y_score, n_thresholds=50, title='PR Curve', sho
     plt.tight_layout()
     plt.show()
 
-    return filtered_precision.tolist(), filtered_recall.tolist(), thresholds.tolist()
+    return filtered_precision.tolist(), filtered_recall.tolist(), filtered_thresholds.tolist()
