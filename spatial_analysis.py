@@ -13,20 +13,16 @@ from utils.tools import visualize_tsne, median_absolute_deviation
 
 
 def parse_option():
+
     parser = argparse.ArgumentParser('Argument for spatial analysis')
 
     parser.add_argument('--dataset_path', type=str, default='./datasets/train', help='path to train dataset')
-
     parser.add_argument('--batch_size', type=int, default=128, help='batch size')
-
     parser.add_argument('--num_workers', type=int, default=16, help='#workers for dataloader')
-
     parser.add_argument('--encoder', type=str, default='resnet18', help='encoder')
-
     parser.add_argument('--model_path', type=str, help='path to checkpoint')
 
     parser.add_argument('--sne_save_path', type=str, default='./save/sne', help='dir to save t-SNE figs')
-
     parser.add_argument('--spatial_distribution_path', type=str, default='./save/spatial_distribution',
                          help='dir to save spatial distribution npz')
 
@@ -45,7 +41,6 @@ def set_loader(opt):
         transforms.ToTensor(),
         transforms.Normalize(mean=mean, std=std)
     ])
-
     dataset = datasets.ImageFolder(root=opt.dataset_path, transform=transform)
 
     data_loader = data.DataLoader(dataset=dataset, batch_size=opt.batch_size, shuffle=False,
