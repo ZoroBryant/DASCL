@@ -160,18 +160,20 @@ def model_evaluation(model, test_loader, apps_radius, apps_centroid, opt):
     print(result)
 
     # Additional evaluation for open-world scenario.
-    y_true_open = [1 if v == 16 else 0 for v in y_true]  # 1=unknown, 0=known
-    # Average Precision for unknown detection.
-    ap_open = average_precision_score(y_true_open, y_score, pos_label=1)
-    print(ap_open)
+    if opt.scenario == 'open-world':
 
-    # Plot PR curve (binned) for open-set detection and return PR vectors.
-    precision_open, recall_open, thresholds_open = (
-        plot_pr_curve_binned(y_true_open, y_score, n_thresholds=20, title='PR Curve', show_ap=True))
+        y_true_open = [1 if v == 16 else 0 for v in y_true]  # 1=unknown, 0=known
+        # Average Precision for unknown detection.
+        ap_open = average_precision_score(y_true_open, y_score, pos_label=1)
+        print(ap_open)
 
-    # Print PR vectors.
-    print("Recall:", recall_open)
-    print("Precision:", precision_open)
+        # Plot PR curve (binned) for open-set detection and return PR vectors.
+        precision_open, recall_open, thresholds_open = (
+            plot_pr_curve_binned(y_true_open, y_score, n_thresholds=20, title='PR Curve', show_ap=True))
+
+        # Print PR vectors.
+        print("Recall:", recall_open)
+        print("Precision:", precision_open)
 
 
 def main():
