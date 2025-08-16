@@ -148,19 +148,13 @@ def model_evaluation(model, test_loader, apps_radius, apps_centroid, opt):
         y_score = np.concatenate(y_score).flatten()
 
     # Select evaluation metrics according to scenario.
-    if opt.scenario == 'open-world':
-        eval_metrics = ['Accuracy', 'Precision', 'Recall', 'F1-score']
-    elif opt.scenario == 'closed-world':
+    if opt.scenario == 'closed-world':
         eval_metrics = ['Accuracy', 'Precision', 'Recall', 'F1-score', 'P@min']
-    else:
-        raise ValueError(f"scenario {opt.scenario} is not matched.")
-
-    # Compute and print classification metrics
-    result = measurement(y_true, y_pred, eval_metrics)
-    print(result)
-
-    # Additional evaluation for open-world scenario.
-    if opt.scenario == 'open-world':
+        # Compute and print classification metrics
+        result = measurement(y_true, y_pred, eval_metrics)
+        print(result)
+    # Evaluation for open-world scenario.
+    elif opt.scenario == 'open-world':
 
         y_true_open = [1 if v == 16 else 0 for v in y_true]  # 1=unknown, 0=known
         # Average Precision for unknown detection.
@@ -174,6 +168,8 @@ def model_evaluation(model, test_loader, apps_radius, apps_centroid, opt):
         # Print PR vectors.
         print("Recall:", recall_open)
         print("Precision:", precision_open)
+    else:
+        raise ValueError(f"scenario {opt.scenario} is not matched.")
 
 
 def main():
